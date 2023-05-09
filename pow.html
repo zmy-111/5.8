@@ -328,6 +328,18 @@
 <script src="./china.js"></script>
 
 <script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+        var imgList = document.querySelectorAll("img");
+        for (var i = 0; i < imgList.length; i++) {
+            imgList[i].addEventListener('load', function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', this.src, true);
+                xhr.setRequestHeader('Referer', 'https://www.your-website.com');
+                xhr.send(null);
+            }, false);
+        }
+    });
+    ////////////
     var china_chart = echarts.init(document.getElementById('china_chart'));
     //数据纯属虚构  [{城市:数据,...}]
     var data = [{
